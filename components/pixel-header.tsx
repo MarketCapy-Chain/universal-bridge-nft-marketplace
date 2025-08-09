@@ -158,9 +158,22 @@ export default function PixelHeader() {
                   </Button>
                 </Link>
               </div>
-              <Button className="pixel-button bg-purple-600 hover:bg-purple-700">
-                Connect
-              </Button>
+              <ConnectButton
+                client={client}
+                wallets={wallets}
+                theme={darkTheme({
+                  colors: {
+                    primaryText: "hsl(142, 69%, 58%)",
+                    primaryButtonBg: "hsl(271, 81%, 56%)",
+                    primaryButtonText: "hsl(0, 0%, 100%)",
+                    secondaryText: "hsl(142, 69%, 58%)",
+                    accentText: "hsl(272, 81%, 56%)",
+                    borderColor: "hsl(272, 81%, 56%)",
+                  },
+                })}
+                connectButton={{ label: "Connect" }}
+                connectModal={{ size: "compact" }}
+              />
             </div>
           </div>
         </div>

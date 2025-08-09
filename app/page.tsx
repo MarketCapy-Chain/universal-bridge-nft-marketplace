@@ -5,6 +5,29 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import NFTGrid from "@/components/nft-grid"
 import PixelHeader from "@/components/pixel-header"
+import { inAppWallet, createWallet } from "thirdweb/wallets";
+import { ConnectButton } from "thirdweb/react";
+import { darkTheme } from "thirdweb/react";
+
+// import the client
+import { client } from "@/app/client";
+
+const wallets = [
+  inAppWallet({
+    auth: {
+      options: [
+        "google",
+        "discord",
+        "telegram",
+        "farcaster",
+        "email",
+        "x",
+        "passkey",
+        "phone",
+      ],
+    },
+  }),
+];
 
 export default function Home() {
   return (
@@ -20,7 +43,22 @@ export default function Home() {
             Collect, trade, and sell unique gaming items from the digital realm
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Button className="pixel-button bg-purple-600 hover:bg-purple-700">Connect Wallet</Button>
+            <ConnectButton
+                client={client}
+                wallets={wallets}
+                theme={darkTheme({
+                  colors: {
+                    primaryText: "hsl(142, 69%, 58%)",
+                    primaryButtonBg: "hsl(271, 81%, 56%)",
+                    primaryButtonText: "hsl(0, 0%, 100%)",
+                    secondaryText: "hsl(142, 69%, 58%)",
+                    accentText: "hsl(272, 81%, 56%)",
+                    borderColor: "hsl(272, 81%, 56%)",
+                  },
+                })}
+                connectButton={{ label: "Connect" }}
+                connectModal={{ size: "compact" }}
+              />
           </div>
         </div>
 
